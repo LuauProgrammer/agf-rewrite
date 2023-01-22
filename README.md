@@ -18,7 +18,7 @@ As previously stated, this expands new features onto the framework. The features
 - FireAllClientsInRange method.
 - FireOtherClientsInRange method.
 - Bindable Middleware implementations.
-- Remote Middleware implementations.
+- Remote Middleware implementations. (only available on the server as of right now)
 - Ability to choose how and when to start the framework (via your own scripts).
 
 More to come if I truly need to add more features. It should be noted that I have yet to figure out how to handle creating client events in modules and how to implement middleware onto remote functions. Another very important thing, caching does not exist yet. I plan to add it in the future, just not now
