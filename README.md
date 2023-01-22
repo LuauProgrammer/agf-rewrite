@@ -17,7 +17,7 @@ As previously stated, this expands new features onto the framework. The features
 - FireMultipleClients method.
 - FireAllClientsInRange method.
 - FireOtherClientsInRange method.
-- Event Middleware implementations.
+- Bindable Middleware implementations.
 - Remote Middleware implementations.
 - Ability to choose how and when to start the framework (via your own scripts).
 
