@@ -204,6 +204,7 @@ return function (Source,Modules) --//source is just the services/controllers
 				RequiredSourceFile._index = ServiceIndex
 				RequiredSourceFile._bridges = {}
 				if type(RequiredSourceFile.Client) == "table" then
+					RequiredSourceFile.Client.Server = nil
 					for FunctionName,RemoteFunction in pairs(RequiredSourceFile.Client) do
 						assert(type(RemoteFunction) == "function", "Expected function got, "..type(RemoteFunction))
 						local Bridge = BridgeNet.CreateBridge(SourceFile.Name.."-"..FunctionName)
@@ -211,6 +212,7 @@ return function (Source,Modules) --//source is just the services/controllers
 						ServiceIndex:SetAttribute(FunctionName,"Function")
 						RequiredSourceFile._bridges[FunctionName] = Bridge
 					end
+					RequiredSourceFile.Client.Server = RequiredSourceFile
 				end
 				ServiceIndex.Name = SourceFile.Name
 				ServiceIndex.Parent = ServicesFolder
