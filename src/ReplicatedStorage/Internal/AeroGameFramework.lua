@@ -131,6 +131,20 @@ function Aero:WaitForEvent(Name)
 	return self._signals[Name].Signal:Wait()
 end
 
+function Aero:WaitForClientEvent(Name) --//makeshift Wait method for bridgenet
+	assert(IS_SERVER,"WaitForClientEvent can only be called on the server!")
+	assert(type(Name) == "string","Expected string, got"..type(Name))
+	assert(self._bridges[Name],"A client event with the name "..Name.." does not exist.")
+	local Arguments = nil
+	local Continue = false --//values could be nil so we need something like this.
+	self._bridges[Name]:Once(function(...)
+		Arguments = ...
+		Continue = true
+	end)
+	repeat until Continue
+	return Arguments
+end
+
 function Aero:FireEvent(Name,...)
 	assert(type(Name) == "string","Expected string, got"..type(Name))
 	assert(self._signals[Name],"A event with the name "..Name.." does not exist.")
