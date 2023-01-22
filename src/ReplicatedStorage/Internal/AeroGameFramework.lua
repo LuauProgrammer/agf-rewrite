@@ -68,7 +68,9 @@ function Aero:WrapModule(Table)
 	assert(type(Table) == "table", "Expected table, got "..type(Table))
 	Table._bridges = IS_SERVER and {} or nil
 	Table._signals = {}
-	setmetatable(Table, Aero)
+	if not Module.AeroStandaloneModule then
+		setmetatable(Table, Aero)
+	end
 	Table.RegisterClientEvent = PreventRegister --//i need to figure out how to properly implement creating remotes into
 	if type(Table.Init) == "function" then Table:Init() end
 	Table.RegisterEvent = PreventRegister
