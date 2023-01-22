@@ -4,6 +4,8 @@ I highly advise against using this. It was created solely to replace AGF on an a
 # agf-rewrite
 A rewrite of the now outdated framework Aero Game Framework. Simply expands and adds new features onto the framework.
 
+Fully backwards compatible with old AGF (caching is currently non-functional).
+
 ## Getting Started
 Download a release (sometimes i'll publish one, if its an old release/no release there just clone this repo and do it on your own), move everything into their according folder. I provide you with a client loader and a server loader for the framework but feel free to create your own loader (ex: load something else before the framework).
 
