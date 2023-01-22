@@ -125,7 +125,13 @@ function Aero:ConnectClientEvent(Name,Callback)
 	return self._bridges[Name]:Connect(Callback)
 end
 
-function Aero:Fire(Name,...)
+function Aero:WaitForEvent(Name)
+	assert(type(Name) == "string","Expected string, got"..type(Name))
+	assert(self._signals[Name],"A event with the name "..Name.." does not exist.")
+	return self._signals[Name].Signal:Wait()
+end
+
+function Aero:FireEvent(Name,...)
 	assert(type(Name) == "string","Expected string, got"..type(Name))
 	assert(self._signals[Name],"A event with the name "..Name.." does not exist.")
 	self._signals[Name].Signal:Fire(self._signals[Name].OutboundMiddleware and self._signals[Name].OutboundMiddleware(...) or ...)
